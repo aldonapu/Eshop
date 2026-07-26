@@ -1,5 +1,6 @@
-#Marketplace
-### Dashboard for This Eshop can be found [here](https://aldonapu.github.io/Eshop/)
+#  Marketplace
+Dashboard for This Eshop can be found [here for demo](https://aldonapu.github.io/Eshop/)
+or [here for repo](https://github.com/aldonapu/Dashboard)
 
 Marketplace adalah aplikasi e-commerce berbasis React.js yang dikembangkan sebagai lanjutan dari Admin Dashboard. Aplikasi ini berfokus pada pengalaman pengguna dalam menjelajahi dan membeli produk yang dikelola melalui dashboard admin.
 
@@ -14,6 +15,7 @@ Produk yang ditambahkan atau diperbarui oleh admin akan tersinkronisasi secara o
 * Firebase Authentication
 * Cloudinary
 * SCSS
+* Framer Motion
 
 ## Features
 
