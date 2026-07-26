@@ -1,0 +1,257 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 24px;
+  color: #111827;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  background: #fff;
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__logo {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  
+  color: black;
+  font-weight: 800;
+}
+
+.header__brand h1 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.header__brand p {
+  margin: 2px 0 0;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.header__search {
+  flex: 1;
+  max-width: 480px;
+  margin: 2px;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 2px 8px;
+  background: #f9fafb;
+}
+
+.header__search input {
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 11px 12px;
+  outline: none;
+  background: transparent;
+}
+
+.header__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.header__login,
+.header__cart {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.header__login {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.header__cart {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff5ef;
+  color: #ff6b2c;
+}
+
+.header__overlay .p-overlaypanel-content {
+  padding: 0;
+  border-radius: 20px;
+}
+
+.header__overlay {
+  width: min(380px, calc(100vw - 24px));
+}
+
+.checkout-card {
+  width: 100%;
+  border-radius: 20px;
+  padding: 16px;
+  background: linear-gradient(180deg, #fff 0%, #fffaf7 100%);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+}
+
+.checkout-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.checkout-card__eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ff6b2c;
+}
+
+.checkout-card__header h3 {
+  margin: 4px 0 0;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.checkout-card__pill {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #ffe9de;
+  color: #c85a1f;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.checkout-card__empty {
+  border: 1px dashed #f0b9a2;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.checkout-card__empty p {
+  margin: 0 0 4px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.checkout-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.checkout-card__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid #f3f4f6;
+}
+
+.checkout-card__item img {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.checkout-card__item-info {
+  flex: 1;
+}
+
+.checkout-card__item-info h4 {
+  margin: 0 0 4px;
+  font-size: 0.9rem;
+  color: #111827;
+}
+
+.checkout-card__item-info p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.checkout-card__item-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.checkout-card__item-meta strong {
+  font-size: 0.85rem;
+  color: #111827;
+}
+
+.checkout-card__item-meta button {
+  border: none;
+  background: #fef2f2;
+  color: #dc2626;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.checkout-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.checkout-card__footer span {
+  display: block;
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+.checkout-card__footer strong {
+  color: #111827;
+}
+
+.checkout-card__button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: black;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .header {
+    padding: 12px 16px;
+    flex-wrap: wrap;
+  }
+
+  .header__search {
+    order: 3;
+    width: 100%;
+    max-width: none;
+  }
+
+  .header__brand {
+    flex: 1;
+  }
+}
+
