@@ -1,10 +1,12 @@
-#  Marketplace
-Dashboard for This Eshop can be found [here for demo](https://aldonapu.github.io/Dashboard)
-or [here for repo](https://github.com/aldonapu/Dashboard)
+# Marketplace
 
-Marketplace adalah aplikasi e-commerce berbasis React.js yang dikembangkan sebagai lanjutan dari Admin Dashboard. Aplikasi ini berfokus pada pengalaman pengguna dalam menjelajahi dan membeli produk yang dikelola melalui dashboard admin.
+The **Admin Dashboard** for this e-commerce project can be found **[here](https://aldonapu.github.io/Dashboard)** for the live demo or **[here](https://github.com/aldonapu/Dashboard)** for the repository.
 
-Produk yang ditambahkan atau diperbarui oleh admin akan tersinkronisasi secara otomatis menggunakan Firebase Firestore, sementara gambar produk disimpan di Cloudinary. Marketplace menyediakan fitur pencarian produk, filter kategori, halaman detail produk, keranjang belanja, wishlist, serta tampilan yang responsif untuk berbagai perangkat.
+## Overview
+
+Marketplace is a **React.js**-based e-commerce application developed as the customer-facing extension of the Admin Dashboard. It focuses on providing a seamless shopping experience, allowing users to browse, search, and purchase products managed through the admin panel.
+
+Products created or updated in the Admin Dashboard are automatically synchronized using **Firebase Firestore**, while product images are stored in **Cloudinary**. The application includes product search, category filtering, product details, a shopping cart, a wishlist, and a fully responsive design for desktop and mobile devices.
 
 ## Tech Stack
 
@@ -19,11 +21,11 @@ Produk yang ditambahkan atau diperbarui oleh admin akan tersinkronisasi secara o
 
 ## Features
 
-* 🔍 Search dan filter produk
-* 🛍️ Detail produk
-* 🛒 Shopping Cart
+* 🔍 Product search and category filtering
+* 🛍️ Product details page
+* 🛒 Shopping cart
 * ❤️ Wishlist
-* 📱 Responsive Design
-* ☁️ Firebase Firestore Integration
-* 🖼️ Cloudinary Image Storage
-* 🔄 Real-time data synchronization dengan Admin Dashboard
+* 📱 Responsive design
+* ☁️ Firebase Firestore integration
+* 🖼️ Cloudinary image storage
+* 🔄 Real-time data synchronization with the Admin Dashboard
