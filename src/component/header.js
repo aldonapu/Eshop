@@ -5,12 +5,18 @@ import { useAppContext } from '../App';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { OverlayPanel } from 'primereact/overlaypanel';
+import { signOut } from 'firebase/auth';
+import { auth } from '../servis/firebase';
+import { useNavigate } from 'react-router-dom';
 
 const Header = ({ search, setSearch }) => {
-  const { cart, setCart, setCartPosition } = useAppContext();
+  const { cart, setCart, setCartPosition, currentuser, setCurrentUser } = useAppContext();
+  const navigate = useNavigate();
   const cartRef = useRef(null);
+  const profileRef = useRef(null);
   const controls = useAnimation();
   const op = useRef(null);
+  const canSearch = typeof setSearch === 'function';
 
   useEffect(() => {
     if (cartRef.current) {
@@ -39,36 +45,79 @@ const Header = ({ search, setSearch }) => {
       minimumFractionDigits: 0,
     }).format(angka);
 
+  const getInitials = (name) => {
+    if (!name) return 'U';
+    return name
+      .split(' ')
+      .map((part) => part[0])
+      .slice(0, 2)
+      .join('')
+      .toUpperCase();
+  };
+
   const removeItem = (id) => {
     setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
   const total = cart.reduce((sum, item) => sum + item.harga * item.qty, 0);
 
+  const logout = async () => {
+    await signOut(auth);
+    localStorage.removeItem('user');
+    setCurrentUser(null);
+    profileRef.current?.hide();
+    navigate('/');
+  };
+
+  const openProfile = (event) => {
+    profileRef.current?.toggle(event);
+  };
+
+  const openProfilePage = () => {
+    profileRef.current?.hide();
+    navigate('/profile');
+  };
+
   return (
     <header className="header">
       <div className="header__brand">
         <span className="header__logo">E</span>
         <div>
-          <h1>STORE</h1>
+          <h1 onClick={() => navigate('/Eshop')} style={{ cursor: 'pointer' }}>
+            STORE
+          </h1>
           <p>Electronic Store</p>
         </div>
       </div>
 
-      <div className="header__search">
-        <input
-          type="text"
-          placeholder="Search Product..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="header__search-input"
-        />
-      </div>
+      {canSearch && (
+        <div className="header__search">
+          <input
+            type="text"
+            placeholder="Search Product..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="header__search-input"
+          />
+        </div>
+      )}
 
       <div className="header__actions">
-        <button type="button" className="header__login">
-          Masuk
-        </button>
+        {currentuser ? (
+          <>
+            
+            <button type="button" className="header__avatar" onClick={openProfile}>
+              {currentuser.foto ? (
+                <img src={currentuser.foto} alt={currentuser.nama} />
+              ) : (
+                <span>{getInitials(currentuser.nama)}</span>
+              )}
+            </button>
+          </>
+        ) : (
+          <button type="button" className="header__login" onClick={() => navigate('/')}>Masuk</button>
+        )}
+
         <motion.button
           ref={cartRef}
           className="header__cart"
@@ -80,6 +129,29 @@ const Header = ({ search, setSearch }) => {
         </motion.button>
       </div>
 
+      <OverlayPanel ref={profileRef} className="header__profile-overlay">
+        {currentuser && (
+          <div className="profile-card">
+            <div className="profile-card__header">
+
+              <div>
+                <p className="profile-card__name">{currentuser.nama}</p>
+                <p className="profile-card__email">{currentuser.email}</p>
+              </div>
+            </div>
+            <button type="button" className="profile-card__button" onClick={openProfilePage}>
+              Profile
+            </button>
+            <button type="button" className="profile-card__order" onClick={() => navigate('/order')}>
+              Order History
+            </button>
+            <button type="button" className="profile-card__logout" onClick={logout}>
+              Logout
+            </button>
+          </div>
+        )}
+      </OverlayPanel>
+
       <OverlayPanel ref={op} className="header__overlay">
         <div className="checkout-card">
           <div className="checkout-card__header">
@@ -87,7 +159,6 @@ const Header = ({ search, setSearch }) => {
               <p className="checkout-card__eyebrow">My Cart</p>
               <h3>{cart.length} item</h3>
             </div>
-            
           </div>
 
           {cart.length === 0 ? (
@@ -122,7 +193,7 @@ const Header = ({ search, setSearch }) => {
                   <span>Total</span>
                   <strong>{formatRupiah(total)}</strong>
                 </div>
-                <button type="button" className="checkout-card__button">
+                <button type="button" className="checkout-card__button" onClick={() => navigate('/checkout')}>
                   Checkout
                 </button>
               </div>

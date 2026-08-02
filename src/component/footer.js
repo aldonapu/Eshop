@@ -66,7 +66,7 @@ const Footer = () => {
       </div>
 
       <div className="footer__bottom">
-        <p>© 2026 ShopHub. Semua hak dilindungi.</p>
+        <p>© 2026 Eshop. Semua hak dilindungi.</p>
       </div>
     </footer>
   );

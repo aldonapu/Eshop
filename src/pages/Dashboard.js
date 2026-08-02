@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Header from '../component/header';
 import Carousel from '../component/corousel';
 import Bestseller from '../component/bestseller';
 import Iklan from '../component/iklan';
 import FlashSale from '../component/flasesale';
 import './Dashboard.scss';
+import Footer from '../component/footer';
 import { db } from "../servis/firebase";
 import { collection, getDocs } from 'firebase/firestore';
 import { useAppContext } from '../App';
@@ -22,9 +23,12 @@ import {
 const Dashboard = () => {
 
   const[products, setProducts] = useState([]) ;
-  const { cart, setCart, setFlyItem} = useAppContext()
+  const { cart, setCart, setFlyItem, currentuser} = useAppContext()
   const[search, setSearch] =useState("");
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  
   const addToCart = (e, product) => {
     // tombol yang diklik
     const button = e.currentTarget;
@@ -161,14 +165,12 @@ const categories = [
             {filterProducts.slice(0 , 8).map((product) => {
               return (
                 <article className="product-card" key={product.id}>
-                <Link to={`/detail/${product.id}`} state={{ product }}>
-                  <div className="product-card__image"><img src={product.gambar} alt='produk'/></div>
-                </Link>
+                  <div className="product-card__image"><img src={product.gambar} alt='produk' onClick={()=>navigate('/detail', {state : product})}/></div>
                   <h3>{product.nama}</h3>
                   <p>{formatRupiah(product.harga)}</p>
 
                   <div className="product-card__actions">
-                      <button type="button" onClick={(e) => addToCart(e, product)}>
+                      <button type="button" onClick={(e) => !currentuser ? navigate('/') : addToCart(e, product)}>
                       Add To Chart
                     </button>
                   </div>
@@ -184,7 +186,9 @@ const categories = [
           formatRupiah={formatRupiah}
         />
       </main>
+      <Footer />
     </div>
+    
   );
 };
 

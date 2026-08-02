@@ -1,8 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import './flashsale.scss';
-import { Link } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
+import { useAppContext } from '../App';
 const FlashSale = ({ products, onAddToCart, formatRupiah }) => {
-
+  const navigate = useNavigate()
+  const{ currentuser} = useAppContext()
   const targetTime = useMemo(() => Date.now() + 1000 * 60 * 60 * 10 + 1000 * 60 * 30, []);
   const [timeLeft, setTimeLeft] = useState({
     hours: 0,
@@ -61,17 +63,16 @@ const FlashSale = ({ products, onAddToCart, formatRupiah }) => {
         <div className="flashsale__grid">
           {products.map((product) => (
             <article className="flashsale__card" key={product.id}>
-              <Link to={`/detail/${product.id}`} state={{ product }} className="flashsale__image-link">
                 <div className="flashsale__image">
-                  <img src={product.gambar} alt={product.nama} />
+                  <img src={product.gambar} alt={product.nama} onClick={()=>navigate('/detail', {state : product})}/>
                 </div>
-              </Link>
+  
 
               <div className="flashsale__card-body">
                 <span className="flashsale__badge">Flash Deal</span>
                 <h3>{product.nama}</h3>
                 <p>{formatRupiah(product.harga)}</p>
-                <button type="button" className="flashsale__button" onClick={(e) => onAddToCart(e, product)}>
+                <button type="button" className="flashsale__button" onClick={(e) => !currentuser ? navigate('/') : onAddToCart(e, product)}>
                   Add To Chart
                 </button>
               </div>
