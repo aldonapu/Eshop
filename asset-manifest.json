@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Eshop/static/css/main.e3830da9.css",
-    "main.js": "/Eshop/static/js/main.21b3487e.js",
+    "main.css": "/Eshop/static/css/main.0605398f.css",
+    "main.js": "/Eshop/static/js/main.46b6dd65.js",
     "static/js/453.4db6b09a.chunk.js": "/Eshop/static/js/453.4db6b09a.chunk.js",
     "static/media/InterVariable-Italic.woff2": "/Eshop/static/media/InterVariable-Italic.e295f70fe3e2df296c7b.woff2",
     "static/media/primeicons.svg": "/Eshop/static/media/primeicons.1b6a7f77815cd68c5525.svg",
@@ -10,13 +10,14 @@
     "static/media/primeicons.woff": "/Eshop/static/media/primeicons.9374a18a18a7ab0d8502.woff",
     "static/media/primeicons.ttf": "/Eshop/static/media/primeicons.7e2f30c9e5de67796cff.ttf",
     "static/media/primeicons.woff2": "/Eshop/static/media/primeicons.2909bbb54be295cd3ca8.woff2",
+    "static/media/Login.svg": "/Eshop/static/media/Login.67c8adce8e9a430fbf48.svg",
     "index.html": "/Eshop/index.html",
-    "main.e3830da9.css.map": "/Eshop/static/css/main.e3830da9.css.map",
-    "main.21b3487e.js.map": "/Eshop/static/js/main.21b3487e.js.map",
+    "main.0605398f.css.map": "/Eshop/static/css/main.0605398f.css.map",
+    "main.46b6dd65.js.map": "/Eshop/static/js/main.46b6dd65.js.map",
     "453.4db6b09a.chunk.js.map": "/Eshop/static/js/453.4db6b09a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e3830da9.css",
-    "static/js/main.21b3487e.js"
+    "static/css/main.0605398f.css",
+    "static/js/main.46b6dd65.js"
   ]
 }
